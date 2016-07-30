@@ -19,8 +19,6 @@ public class GroundInput : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hit, 100, groundMask))
             {
-                Debug.Log(hit.point);
-
                 if (OnGroundTouch != null)
                     OnGroundTouch(hit.point);
             }
