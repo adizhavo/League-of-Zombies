@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: b5719f7112606fa44a72282055ae379c
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Zombie
+    100002: CATRigLLegAnkle
+    100004: CATRigSpine1
+    100006: CATRigRLegPlatform
+    100008: CATRigLLegPlatform
+    100010: CATRigHub002
+    100012: CATRigJaw
+    100014: //RootNode
+    100016: CATRigRArmCollarbone
+    100018: CATRigLArmCollarbone
+    100020: CATRigLArm1
+    100022: Character001
+    100024: CATRigLBrow
+    100026: CATRigHub001
+    100028: CATRigRBrow
+    100030: CATRigNeck
+    100032: CATRigLLeg2
+    100034: CATRigHead
+    100036: CATRigLLeg1
+    100038: CATRigRLeg2
+    100040: CATRigRLegAnkle
+    100042: CATRigRArm1
+    100044: CATRigSpine2
+    100046: CATRigRArmPalm
+    100048: CATRigRLeg1
+    100050: CATRigRArm2
+    100052: CATRigLArm2
+    100054: CATRigLArmPalm
+    400000: Zombie
+    400002: CATRigLLegAnkle
+    400004: CATRigSpine1
+    400006: CATRigRLegPlatform
+    400008: CATRigLLegPlatform
+    400010: CATRigHub002
+    400012: CATRigJaw
+    400014: //RootNode
+    400016: CATRigRArmCollarbone
+    400018: CATRigLArmCollarbone
+    400020: CATRigLArm1
+    400022: Character001
+    400024: CATRigLBrow
+    400026: CATRigHub001
+    400028: CATRigRBrow
+    400030: CATRigNeck
+    400032: CATRigLLeg2
+    400034: CATRigHead
+    400036: CATRigLLeg1
+    400038: CATRigRLeg2
+    400040: CATRigRLegAnkle
+    400042: CATRigRArm1
+    400044: CATRigSpine2
+    400046: CATRigRArmPalm
+    400048: CATRigRLeg1
+    400050: CATRigRArm2
+    400052: CATRigLArm2
+    400054: CATRigLArmPalm
+    4300000: Zombie
+    7400000: Take 001
+    7400002: idle
+    7400004: Zombie_medival
+    7400006: Zombie_medieval_death01
+    11100000: //RootNode
+    13700000: Zombie
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Zombie_medieval_death01
+      takeName: 
+      firstFrame: 1
+      lastFrame: 20
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

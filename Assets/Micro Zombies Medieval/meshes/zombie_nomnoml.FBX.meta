@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: 6862185e1842d854cae4e26a6d5a8ade
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: CATRigRLeg1
+    100002: CATRigLLegAnkle
+    100004: CATRigLLeg2
+    100006: CATRigRArm2
+    100008: CATRigRArm1
+    100010: CATRigHead
+    100012: CATRigNeck
+    100014: CATRigRArmPalm
+    100016: //RootNode
+    100018: CATRigJaw
+    100020: CATRigRBrow
+    100022: CATRigLBrow
+    100024: CATRigHub002
+    100026: CATRigSpine2
+    100028: CATRigLLeg1
+    100030: CATRigHub001
+    100032: Character001
+    100034: Zombie
+    100036: CATRigSpine1
+    100038: CATRigRLegAnkle
+    100040: CATRigRLeg2
+    100042: CATRigRLegPlatform
+    100044: CATRigLLegPlatform
+    100046: CATRigRArmCollarbone
+    100048: CATRigLArmCollarbone
+    100050: CATRigLArmPalm
+    100052: CATRigLArm2
+    100054: CATRigLArm1
+    400000: CATRigRLeg1
+    400002: CATRigLLegAnkle
+    400004: CATRigLLeg2
+    400006: CATRigRArm2
+    400008: CATRigRArm1
+    400010: CATRigHead
+    400012: CATRigNeck
+    400014: CATRigRArmPalm
+    400016: //RootNode
+    400018: CATRigJaw
+    400020: CATRigRBrow
+    400022: CATRigLBrow
+    400024: CATRigHub002
+    400026: CATRigSpine2
+    400028: CATRigLLeg1
+    400030: CATRigHub001
+    400032: Character001
+    400034: Zombie
+    400036: CATRigSpine1
+    400038: CATRigRLegAnkle
+    400040: CATRigRLeg2
+    400042: CATRigRLegPlatform
+    400044: CATRigLLegPlatform
+    400046: CATRigRArmCollarbone
+    400048: CATRigLArmCollarbone
+    400050: CATRigLArmPalm
+    400052: CATRigLArm2
+    400054: CATRigLArm1
+    4300000: Zombie
+    7400000: Take 001
+    11100000: //RootNode
+    13700000: Zombie
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
