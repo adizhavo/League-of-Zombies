@@ -5,7 +5,8 @@ public class GroundInputMover : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float inputDistance;
+
+    public readonly float inputDistance = 0.1f;
 
     private Vector3 startPos;
     private Vector3 targetPos;
@@ -42,6 +43,7 @@ public class GroundInputMover : MonoBehaviour
         if (distance > inputDistance && timeCounter < 1f)
         {
             LerpMovement();
+            LerpRotation();
         }
     }
 
@@ -50,6 +52,13 @@ public class GroundInputMover : MonoBehaviour
         transform.position = Vector3.Lerp(startPos, targetPos, timeCounter);
         float moveTime = targetDistance / movementSpeed;
         timeCounter += Time.deltaTime / moveTime;
+    }
+
+    private void LerpRotation()
+    {
+        Vector3 direction = targetPos - transform.position;
+        Quaternion targetRot = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * rotationSpeed);
     }
 
     private float timeCounter;
