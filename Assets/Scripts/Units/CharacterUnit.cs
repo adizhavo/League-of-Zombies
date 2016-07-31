@@ -6,26 +6,21 @@ public class CharacterUnit : MonoBehaviour {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSpeed;
 
-    private Unit entity;
+    private Entity entity;
 
     protected virtual void Start () 
     {
         MoveSystem mover = new GroundInputMover(moveSpeed, rotationSpeed);
 
-        entity = new Unit(transform, mover);
-
-        // Used to update teh values each frame from the editor
-        // Component dependecies will solve this problem in code
-        #if UNITY_EDITOR
-        moveSystem = mover;
-        #endif
+        entity = new Entity(transform);
+        entity.AddComponent(mover);
 	}
 
     protected virtual void Update ()
     {
         if (entity == null) return;
 
-        entity.unitMover.FrameMove();
+        entity.FrameUpdate();
 
         // Used to update teh values each frame from the editor
         #if UNITY_EDITOR
@@ -39,6 +34,7 @@ public class CharacterUnit : MonoBehaviour {
     #if UNITY_EDITOR
     private void Refresh()
     {
+        MoveSystem moveSystem = entity.GetComponent<MoveSystem>() as MoveSystem;
         moveSystem.MovementSpeed = moveSpeed;
         moveSystem.RotationSpeed = rotationSpeed;
     }

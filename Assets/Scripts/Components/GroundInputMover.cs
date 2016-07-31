@@ -5,7 +5,7 @@ public class NullMover : MoveSystem
 {
     public float MovementSpeed {set;get;}
     public float RotationSpeed {set;get;}
-    public Unit Entity {set;get;}
+    public Entity Entity {set;get;}
 
     public void FrameMove(){ }
 }
@@ -18,8 +18,8 @@ public class GroundInputMover : MoveSystem
     public float MovementSpeed {set;get;}
     public float RotationSpeed {set;get;}
 
-    private Unit entity;
-    public Unit Entity 
+    private Entity entity;
+    public Entity Entity 
     {
         set
         {
