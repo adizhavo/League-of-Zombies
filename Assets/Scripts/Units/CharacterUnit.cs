@@ -34,7 +34,7 @@ public class CharacterUnit : MonoBehaviour {
     #if UNITY_EDITOR
     private void Refresh()
     {
-        MoveSystem moveSystem = entity.GetComponent<MoveSystem>() as MoveSystem;
+        MoveSystem moveSystem = entity.GetComponent<MoveSystem>();
         moveSystem.MovementSpeed = moveSpeed;
         moveSystem.RotationSpeed = rotationSpeed;
     }

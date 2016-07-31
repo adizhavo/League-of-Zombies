@@ -27,16 +27,17 @@ public class Entity
         }
     }
 
-    public Component GetComponent<T>() where T : Component
+    public T GetComponent<T>() where T : Component
     {
         for (int i = 0; i < unitComponents.Count; i ++)
         {
-            if (unitComponents[i] is T) return unitComponents[i];
+            if ((T)unitComponents[i] != null) return (T)unitComponents[i];
         }
 
-        return null;
+        return default(T);
     }
 
+    // the container will be accessable from different components
     public Transform container;
 
     public Entity(Transform container)
@@ -46,9 +47,11 @@ public class Entity
 
     ~Entity()
     {
+        container = null;
         unitComponents.Clear();
     }
 
+    // each component will be poked each frame
     public void FrameUpdate()
     {
         for (int i = 0; i < unitComponents.Count; i ++)
