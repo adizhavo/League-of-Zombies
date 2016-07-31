@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// responsible for every input in the game
+// can be reconfigured fpr different platforms
 public static class InputConfig
 {
     #if UNITY_EDITOR

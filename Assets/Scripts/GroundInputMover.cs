@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Will move all unit that are subscribe to the GrounInput event to a specific position
 public class GroundInputMover : MonoBehaviour 
 {
     [SerializeField] private float movementSpeed;

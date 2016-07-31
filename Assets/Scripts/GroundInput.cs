@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Will notify all subscribers that the user has touch a specific position in the map
 public class GroundInput : MonoBehaviour {
 
     public delegate void GroundTouch(Vector3 groudPos);
