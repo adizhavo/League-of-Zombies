@@ -10,7 +10,7 @@ public class GroundInput : MonoBehaviour {
 
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (InputConfig.TouchUp())
         {
             // are we clicking a UI object ?
 
