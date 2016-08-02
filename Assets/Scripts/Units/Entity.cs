@@ -8,8 +8,9 @@ public class Entity
 
     public void AddComponent(Component cmp)
     {
+        // we now that for now multiple same components can be added
+        // addind more than one of the same component will not be allowed
         if (cmp == null) return;
-        if (unitComponents.Contains(cmp)) unitComponents[unitComponents.IndexOf(cmp)] = cmp; // really quick solution, can be optimized later
         else unitComponents.Add(cmp);
 
         cmp.Entity = this;
@@ -24,6 +25,15 @@ public class Entity
                 unitComponents[i].Entity = null;
                 unitComponents.RemoveAt(i);
             }
+        }
+    }
+
+    public void RemoveAllComponents()
+    {
+        for (int i = 0; i < unitComponents.Count; i ++)
+        {
+            unitComponents[i].Entity = null;
+            unitComponents.RemoveAt(i);
         }
     }
 
@@ -55,6 +65,6 @@ public class Entity
     public void FrameUpdate()
     {
         for (int i = 0; i < unitComponents.Count; i ++)
-            unitComponents[i].FrameMove();
+            unitComponents[i].FrameUpdate();
     }
 }
