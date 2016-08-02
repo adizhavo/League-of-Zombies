@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CharacterUnit : MonoBehaviour {
 
@@ -12,6 +11,7 @@ public class CharacterUnit : MonoBehaviour {
     {
         MoveSystem mover = new GroundInputMover(moveSpeed, rotationSpeed);
 
+        // transform is only assigned to be manipolate from components
         entity = new Entity(transform);
         entity.AddComponent(mover);
 	}
@@ -26,6 +26,14 @@ public class CharacterUnit : MonoBehaviour {
         #if UNITY_EDITOR
         Refresh();
         #endif
+
+//        Example of changing or removing component
+//
+//        if (Time.timeSinceLevelLoad > 5)
+//        {
+//            entity.RemoveComponent<MoveSystem>();
+//            entity.AddComponent(new NullMover());
+//        }
 	}
 
     private MoveSystem moveSystem;
