@@ -14,7 +14,7 @@ public static class DamagableInput
     {
         if (OnDamagableTouch != null)
         {
-            CharacterUnit unit = touchedTr.GetComponent(typeof(CharacterUnit)) as CharacterUnit;
+            Unit unit = touchedTr.GetComponent(typeof(Unit)) as Unit;
 
             if (unit != null)
             {

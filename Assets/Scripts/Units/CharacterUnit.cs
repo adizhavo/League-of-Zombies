@@ -1,18 +1,12 @@
 ﻿using UnityEngine;
 
-public class CharacterUnit : MonoBehaviour {
+public class CharacterUnit : Unit {
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float damage;
 
-    public Entity entity
-    {
-        protected set;
-        get;
-    }
-
-    protected virtual void Start () 
+    protected override void Start () 
     {
         MoveSystem mover = new GroundInputMover(moveSpeed, rotationSpeed);
         AttackSystem attacker = new MeleeAttackComponent(damage);
@@ -23,7 +17,7 @@ public class CharacterUnit : MonoBehaviour {
         entity.AddComponent(attacker);
 	}
 
-    protected virtual void Update ()
+    protected override void Update ()
     {
         if (entity == null) return;
 

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class CreepUnit : CharacterUnit
+public class CreepUnit : Unit
 {
     protected override void Start()
     {
@@ -9,5 +8,10 @@ public class CreepUnit : CharacterUnit
 
         DamagableSystem damagable = new DamageComponent();
         entity.AddComponent(damagable);
+    }
+
+    protected override void Update()
+    {
+        
     }
 }
