@@ -1,7 +1,11 @@
-﻿public interface Component
+﻿public interface Framer
+{
+    void FrameUpdate();
+}
+
+public interface Component : Framer
 {
     Entity Entity {set; get;}
-    void FrameMove();
 }
 
 public interface MoveSystem : Component

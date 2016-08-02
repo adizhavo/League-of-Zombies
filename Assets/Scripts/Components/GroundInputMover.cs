@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class NullMover : MoveSystem
 {
@@ -7,7 +6,7 @@ public class NullMover : MoveSystem
     public float RotationSpeed {set;get;}
     public Entity Entity {set;get;}
 
-    public void FrameMove(){ }
+    public void FrameUpdate(){ }
 }
 
 // Will move all unit that are subscribe to the GrounInput event to a specific position
@@ -60,7 +59,7 @@ public class GroundInputMover : MoveSystem
         GroundInput.OnGroundTouch -= GrounPosition;
     }
 
-    public void FrameMove()
+    public void FrameUpdate()
     {
         if (entity == null) return;
 
