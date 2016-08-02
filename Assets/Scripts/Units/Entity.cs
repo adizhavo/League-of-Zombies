@@ -40,7 +40,7 @@ public class Entity
     public T GetComponent<T>() where T : Component
     {
         for (int i = 0; i < unitComponents.Count; i ++)
-        {
+        {   
             if ((T)unitComponents[i] != null) return (T)unitComponents[i];
         }
 

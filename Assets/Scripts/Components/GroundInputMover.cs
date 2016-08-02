@@ -17,6 +17,7 @@ public class GroundInputMover : MoveSystem
     public float MovementSpeed {set;get;}
     public float RotationSpeed {set;get;}
 
+    #region Component implementation
     private Entity entity;
     public Entity Entity 
     {
@@ -35,6 +36,7 @@ public class GroundInputMover : MoveSystem
             return entity;
         }
     }
+    #endregion
 
     private Vector3 startPos;
     private Vector3 targetPos;
@@ -59,6 +61,7 @@ public class GroundInputMover : MoveSystem
         GroundInput.OnGroundTouch -= GrounPosition;
     }
 
+    #region Framer implementation
     public void FrameUpdate()
     {
         if (entity == null) return;
@@ -71,6 +74,7 @@ public class GroundInputMover : MoveSystem
             LerpRotation();
         }
     }
+    #endregion
 
     private void LerpMovement()
     {
