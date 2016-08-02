@@ -8,7 +8,7 @@ public class CharacterUnit : Unit {
 
     protected override void Start () 
     {
-        MoveSystem mover = new GroundInputMover(moveSpeed, rotationSpeed);
+        MoveSystem mover = new GroundInputMoverComponent(moveSpeed, rotationSpeed);
         AttackSystem attacker = new MeleeAttackComponent(damage);
 
         // transform is only assigned to be manipolate from components

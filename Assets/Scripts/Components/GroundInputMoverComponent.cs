@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class NullMover : MoveSystem
+public class NullMoverComponent : MoveSystem
 {
     public float MovementSpeed {set;get;}
     public float RotationSpeed {set;get;}
@@ -10,7 +10,7 @@ public class NullMover : MoveSystem
 }
 
 // Will move all unit that are subscribe to the GrounInput event to a specific position
-public class GroundInputMover : MoveSystem 
+public class GroundInputMoverComponent : MoveSystem 
 {
     public readonly float inputDistance = 0.1f;
 
@@ -41,21 +41,21 @@ public class GroundInputMover : MoveSystem
     private Vector3 startPos;
     private Vector3 targetPos;
 
-    public GroundInputMover(float MovementSpeed, float rotationSpeed)
+    public GroundInputMoverComponent(float MovementSpeed, float rotationSpeed)
     {
         GroundInput.OnGroundTouch += GrounPosition;
         this.MovementSpeed = MovementSpeed;
         this.RotationSpeed = rotationSpeed;
     }
 
-    public GroundInputMover()
+    public GroundInputMoverComponent()
     {
         GroundInput.OnGroundTouch += GrounPosition;
         this.MovementSpeed = 1; // standart value
         this.RotationSpeed = 7;
     }
 
-    ~GroundInputMover()
+    ~GroundInputMoverComponent()
     {
         entity = null;
         GroundInput.OnGroundTouch -= GrounPosition;
