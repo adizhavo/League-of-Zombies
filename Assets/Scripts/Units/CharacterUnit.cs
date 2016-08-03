@@ -5,11 +5,12 @@ public class CharacterUnit : Unit {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float damage;
+    [SerializeField] private float range;
 
     protected override void Start () 
     {
         MoveSystem mover = new GroundInputMoverComponent(moveSpeed, rotationSpeed);
-        AttackSystem attacker = new MeleeAttackComponent(damage);
+        AttackSystem attacker = new AttackComponent(damage, range);
 
         // transform is only assigned to be manipolate from components
         entity = new Entity(transform);
