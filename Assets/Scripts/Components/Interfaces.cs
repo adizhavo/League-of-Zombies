@@ -26,4 +26,5 @@ public interface AttackSystem : Component
 {
     float Damage {set; get;}
     float Range {set; get;}
+    float ReloadTime {set; get;}
 }

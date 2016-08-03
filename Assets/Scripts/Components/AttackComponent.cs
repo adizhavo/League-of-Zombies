@@ -10,22 +10,36 @@ public class AttackComponent : AttackSystem
     #region AttackSystem implementation
     public float Damage {set;get;}
     public float Range {set;get;}
+    public float ReloadTime {set;get;}
     #endregion
 
     private MoveSystem movementComponent;
 
-    public AttackComponent(float Damage, float Range)
+    public AttackComponent(float Damage, float Range, float ReloadTime)
     {
         DamagableInput.OnDamagableTouch += DamagableSelected;
+        GroundInput.OnGroundTouch += ClearAttack;
+
         this.Damage = Damage;
         this.Range = Range;
+        this.ReloadTime = ReloadTime;
+    }
+
+    public AttackComponent()
+    {
+        this.Range = Mathf.Infinity;
     }
 
     ~AttackComponent()
     {
         DamagableInput.OnDamagableTouch -= DamagableSelected;
-        this.Damage = 1;
-        this.Range = 1;
+        GroundInput.OnGroundTouch -= ClearAttack;
+    }
+
+    private void ClearAttack(Vector3 pos)
+    {
+        target = null;
+        targetTr = null;
     }
 
     private void DamagableSelected(Entity selectedEntity, DamagableSystem damagableComponent)
@@ -49,16 +63,25 @@ public class AttackComponent : AttackSystem
     #region Framer implementation
     public void FrameUpdate()
     {
-        if (target != null && movementComponent != null && damagableDistance < Range)
+        if (target != null && movementComponent != null)
         {
-            movementComponent.Stop();
-            target.ApplyDamage(Damage);
+            if (damagableDistance < Range && timer > ReloadTime)
+            {
+                movementComponent.Stop();
+                target.ApplyDamage(Damage);
+
+                timer = 0f;
+            }
+
+            timer += Time.deltaTime;
         }
     }
     #endregion
 
     private DamagableSystem target;
     private Transform targetTr;
+
+    private float timer = Mathf.Infinity;
 
     private float damagableDistance
     {
