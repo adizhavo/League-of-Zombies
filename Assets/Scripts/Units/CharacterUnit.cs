@@ -6,11 +6,12 @@ public class CharacterUnit : Unit {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float damage;
     [SerializeField] private float range;
+    [SerializeField] private float reloadTime;
 
     protected override void Start () 
     {
         MoveSystem mover = new GroundInputMoverComponent(moveSpeed, rotationSpeed);
-        AttackSystem attacker = new AttackComponent(damage, range);
+        AttackSystem attacker = new AttackComponent(damage, range, reloadTime);
 
         // transform is only assigned to be manipolate from components
         entity = new Entity(transform);
@@ -26,7 +27,7 @@ public class CharacterUnit : Unit {
 
         // Used to update teh values each frame from the editor
         #if UNITY_EDITOR
-//        Refresh();
+        Refresh();
         #endif
 
 //        Example of changing or removing component
