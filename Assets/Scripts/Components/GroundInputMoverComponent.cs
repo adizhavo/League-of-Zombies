@@ -2,11 +2,15 @@
 
 public class NullMoverComponent : MoveSystem
 {
-    public float MovementSpeed {set;get;}
-    public float RotationSpeed {set;get;}
+    public void FrameUpdate(){ }
+
     public Entity Entity {set;get;}
 
-    public void FrameUpdate(){ }
+    public float MovementSpeed {set;get;}
+    public float RotationSpeed {set;get;}
+
+    public void MoveTo(float x, float y, float z) { }
+    public void Stop() { }
 }
 
 // Will move all unit that are subscribe to the GrounInput event to a specific position
@@ -14,8 +18,23 @@ public class GroundInputMoverComponent : MoveSystem
 {
     public readonly float inputDistance = 0.1f;
 
+    #region Component implementation
     public float MovementSpeed {set;get;}
     public float RotationSpeed {set;get;}
+
+    public void MoveTo(float x, float y, float z) 
+    {
+        if (entity == null) return;
+
+        GrounPosition(new Vector3(x, y, z));
+    }
+
+    public void Stop()
+    {
+        startPos = entity.container.position;
+        targetPos = entity.container.position;
+    }
+    #endregion
 
     #region Component implementation
     private Entity entity;
@@ -94,9 +113,7 @@ public class GroundInputMoverComponent : MoveSystem
     {
         startPos = entity.container.position;
         targetPos = pos;
-
         targetDistance = Vector3.Distance(startPos, targetPos);
-
         timeCounter = 0;
     }
 
