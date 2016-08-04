@@ -1,16 +1,5 @@
 ﻿using UnityEngine;
 
-public class NullAnimationComponent : AnimationSystem
-{
-    public Entity Entity {set; get;}
-
-    public void Play(string clipName) { }
-    public float GetLenght(string clipName) { return Mathf.Infinity; }
-    public void ReturnToIdle() { }
-    public string CurrentClip() { return string.Empty; }
-    public void FrameUpdate() { }
-}
-
 public class AnimationComponent : AnimationSystem
 {
     #region AnimationSystem implementation

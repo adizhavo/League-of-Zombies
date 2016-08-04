@@ -1,18 +1,5 @@
 ﻿using UnityEngine;
 
-public class NullMoverComponent : MoveSystem
-{
-    public void FrameUpdate(){ }
-
-    public Entity Entity {set; get;}
-
-    public float MovementSpeed {set; get;}
-    public float RotationSpeed {set; get;}
-
-    public void MoveTo(float x, float y, float z) { }
-    public void Stop() { }
-}
-
 // Will move all unit that are subscribe to the GrounInput event to a specific position
 public class GroundInputMoverComponent : MoveSystem 
 {

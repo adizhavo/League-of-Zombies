@@ -1,16 +1,5 @@
 ﻿using UnityEngine;
 
-public class NullAttackComponent : AttackSystem
-{
-    public Entity Entity {set; get;}
-
-    public float Damage {set; get;}
-    public float Range {set; get;}
-    public float ReloadTime {set; get;}
-
-    public void FrameUpdate() { }
-}
-
 public class AttackComponent : AttackSystem
 {
     #region Component implementation
