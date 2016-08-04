@@ -28,7 +28,7 @@ public class CharacterUnit : Unit
 
         entity.FrameUpdate();
 
-        // Used to update teh values each frame from the editor
+        // Used to update the values each frame from the editor
         #if UNITY_EDITOR
         Refresh();
         #endif
@@ -42,8 +42,6 @@ public class CharacterUnit : Unit
 //        }
 	}
 
-    private MoveSystem moveSystem;
-
     // Used to update teh values each frame from the editor
     #if UNITY_EDITOR
     private void Refresh()
@@ -51,6 +49,11 @@ public class CharacterUnit : Unit
         MoveSystem moveSystem = entity.GetComponent<MoveSystem>();
         moveSystem.MovementSpeed = moveSpeed;
         moveSystem.RotationSpeed = rotationSpeed;
+
+        AttackSystem attackSystem = entity.GetComponent<AttackSystem>();
+        attackSystem.Damage = damage;
+        attackSystem.Range = range;
+        attackSystem.ReloadTime = reloadTime;
     }
     #endif
 }

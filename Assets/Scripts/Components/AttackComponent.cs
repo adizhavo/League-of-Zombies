@@ -42,8 +42,10 @@ public class AttackComponent : AttackSystem
         targetTr = null;
     }
 
+    // A damagable entity is selecetd by the player
     private void DamagableSelected(Entity selectedEntity, DamagableSystem damagableComponent)
     {
+        // A series a checks for components
         if (selectedEntity == Entity) return;
         if (movementComponent == null) movementComponent = Entity.GetComponent<MoveSystem>();
         if (movementComponent == null) return;
@@ -53,8 +55,14 @@ public class AttackComponent : AttackSystem
         target = damagableComponent;
         targetTr = selectedEntity.container;
 
+        // Are we close enough ?
         if (damagableDistance < Range)
+        {
+            animationComponent.Play("Attack");
+
+            // It should be triggered by an animation event
             damagableComponent.ApplyDamage(Damage);
+        }
         else
         {
             Vector3 movePos = selectedEntity.container.position;
@@ -74,7 +82,6 @@ public class AttackComponent : AttackSystem
 
                 // It should be triggered by an animation event
                 target.ApplyDamage(Damage);
-
 
                 timer = 0f;
             }
