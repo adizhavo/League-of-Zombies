@@ -28,3 +28,11 @@ public interface AttackSystem : Component
     float Range {set; get;}
     float ReloadTime {set; get;}
 }
+
+public interface AnimationSystem : Component
+{
+    void Play(string clipName);
+    float GetLenght(string clipName);
+    void ReturnToIdle();
+    string CurrentClip();
+}

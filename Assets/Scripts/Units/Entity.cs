@@ -37,11 +37,12 @@ public class Entity
         }
     }
 
-    public T GetComponent<T>() where T : Component
+    public T GetComponent<T>() where T : class, Component
     {
         for (int i = 0; i < unitComponents.Count; i ++)
         {   
-            if ((T)unitComponents[i] != null) return (T)unitComponents[i];
+            if (unitComponents[i] as T != null) 
+                return (T)unitComponents[i];
         }
 
         return default(T);

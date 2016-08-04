@@ -1,26 +1,13 @@
 ﻿using UnityEngine;
 
-public class NullMoverComponent : MoveSystem
-{
-    public void FrameUpdate(){ }
-
-    public Entity Entity {set;get;}
-
-    public float MovementSpeed {set;get;}
-    public float RotationSpeed {set;get;}
-
-    public void MoveTo(float x, float y, float z) { }
-    public void Stop() { }
-}
-
 // Will move all unit that are subscribe to the GrounInput event to a specific position
 public class GroundInputMoverComponent : MoveSystem 
 {
     public readonly float inputDistance = 0.1f;
 
     #region Component implementation
-    public float MovementSpeed {set;get;}
-    public float RotationSpeed {set;get;}
+    public float MovementSpeed {set; get;}
+    public float RotationSpeed {set; get;}
 
     public void MoveTo(float x, float y, float z) 
     {
@@ -31,8 +18,13 @@ public class GroundInputMoverComponent : MoveSystem
 
     public void Stop()
     {
+        float distance = Vector3.Distance(targetPos, entity.container.position);
+        if (distance < Mathf.Epsilon) return;
+
         startPos = entity.container.position;
         targetPos = entity.container.position;
+
+        if (animationComponent != null) animationComponent.ReturnToIdle();
     }
     #endregion
 
@@ -45,8 +37,7 @@ public class GroundInputMoverComponent : MoveSystem
             if (value != null) // initialise the position when the entity is assigned
             {
                 this.entity = value;
-                startPos = entity.container.position;
-                targetPos = entity.container.position;
+                Stop();
             }
         }
 
@@ -92,6 +83,7 @@ public class GroundInputMoverComponent : MoveSystem
             LerpMovement();
             LerpRotation();
         }
+        else Stop();
     }
     #endregion
 
@@ -115,8 +107,12 @@ public class GroundInputMoverComponent : MoveSystem
         targetPos = pos;
         targetDistance = Vector3.Distance(startPos, targetPos);
         timeCounter = 0;
+
+        if (animationComponent == null) animationComponent = Entity.GetComponent<AnimationSystem>();
+        animationComponent.Play("Run");
     }
 
     private float timeCounter;
     private float targetDistance;
+    private AnimationSystem animationComponent;
 }

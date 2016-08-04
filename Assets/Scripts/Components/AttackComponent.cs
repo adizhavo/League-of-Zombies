@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class AttackComponent : AttackSystem
 {
     #region Component implementation
-    public Entity Entity {set;get;}
+    public Entity Entity {set; get;}
     #endregion
 
     #region AttackSystem implementation
-    public float Damage {set;get;}
-    public float Range {set;get;}
-    public float ReloadTime {set;get;}
+    public float Damage {set; get;}
+    public float Range {set; get;}
+    public float ReloadTime {set; get;}
     #endregion
 
     private MoveSystem movementComponent;
+    private AnimationSystem animationComponent;
 
     public AttackComponent(float Damage, float Range, float ReloadTime)
     {
@@ -42,17 +42,27 @@ public class AttackComponent : AttackSystem
         targetTr = null;
     }
 
+    // A damagable entity is selecetd by the player
     private void DamagableSelected(Entity selectedEntity, DamagableSystem damagableComponent)
     {
+        // A series a checks for components
         if (selectedEntity == Entity) return;
         if (movementComponent == null) movementComponent = Entity.GetComponent<MoveSystem>();
         if (movementComponent == null) return;
+        if (animationComponent == null) animationComponent = Entity.GetComponent<AnimationSystem>();
+        if (animationComponent == null) return;
 
         target = damagableComponent;
         targetTr = selectedEntity.container;
 
+        // Are we close enough ?
         if (damagableDistance < Range)
+        {
+            animationComponent.Play("Attack");
+
+            // It should be triggered by an animation event
             damagableComponent.ApplyDamage(Damage);
+        }
         else
         {
             Vector3 movePos = selectedEntity.container.position;
@@ -68,6 +78,9 @@ public class AttackComponent : AttackSystem
             if (damagableDistance < Range && timer > ReloadTime)
             {
                 movementComponent.Stop();
+                if (animationComponent != null) animationComponent.Play("Attack");
+
+                // It should be triggered by an animation event
                 target.ApplyDamage(Damage);
 
                 timer = 0f;
