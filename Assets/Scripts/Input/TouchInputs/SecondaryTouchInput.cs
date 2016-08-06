@@ -2,20 +2,36 @@
 
 public class SecondaryTouchInput : Framer
 {
-    public delegate void SecodnaryTouch(Transform touchedTr, Vector3 pointTouched);
-    public static event SecodnaryTouch OnSecondaryTouch;
+    public delegate void SecondaryTouchDown(Transform touchedTr, Vector3 pointTouched);
+    public static event SecondaryTouchDown OnSecondaryTouchDown;
+
+    public delegate void SecondaryTouch(Transform touchedTr, Vector3 pointTouched);
+    public static event SecondaryTouch OnSecondaryTouch;
 
     public virtual void FrameUpdate()
     {
         if (InputConfig.SecondaryTouch())
         {
-            // are we clicking a UI object ?
-
             RaycastHit hit = TouchInputCaster.CastToMousePos();
-            if (hit.transform != null && OnSecondaryTouch != null)
-            {
-                OnSecondaryTouch(hit.transform, hit.point);
-            }
+
+            NotifySecondaryTouchPos(hit);
+            NotifySecondaryTouchDownPos(hit);
+        }
+    }
+
+    private static void NotifySecondaryTouchPos(RaycastHit hit)
+    {
+        if (hit.transform != null && OnSecondaryTouch != null)
+        {
+            OnSecondaryTouch(hit.transform, hit.point);
+        }
+    }
+
+    private static void NotifySecondaryTouchDownPos(RaycastHit hit)
+    {
+        if (hit.transform != null && InputConfig.SecondaryTouchDown() && OnSecondaryTouchDown != null)
+        {
+            OnSecondaryTouchDown(hit.transform, hit.point);
         }
     }
 }

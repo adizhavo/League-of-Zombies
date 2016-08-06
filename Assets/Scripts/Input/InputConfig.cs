@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-
 // responsible for every input in the game
 // can be reconfigured fpr different platforms
 public static class InputConfig
@@ -22,9 +20,14 @@ public static class InputConfig
         return Input.GetMouseButton(0);
     }
 
-    public static bool SecondaryTouch()
+    public static bool SecondaryTouchDown()
     {
         return Input.GetMouseButtonDown(1);
+    }
+
+    public static bool SecondaryTouch()
+    {
+        return Input.GetMouseButton(1);
     }
 
     public static bool Skillshot()
