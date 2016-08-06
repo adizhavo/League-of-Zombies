@@ -25,11 +25,6 @@ public static class InputConfig
         return Input.GetMouseButtonDown(1);
     }
 
-    public static bool SecondaryTouch()
-    {
-        return Input.GetMouseButton(1);
-    }
-
     public static bool Skillshot()
     {
         return Input.GetKey(KeyCode.Space);

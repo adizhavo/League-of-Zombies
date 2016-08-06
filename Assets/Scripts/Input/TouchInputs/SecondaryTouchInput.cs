@@ -10,7 +10,7 @@ public class SecondaryTouchInput : Framer
 
     public virtual void FrameUpdate()
     {
-        if (InputConfig.SecondaryTouch())
+        if (InputConfig.Skillshot())
         {
             RaycastHit hit = TouchInputCaster.CastToMousePos();
 
