@@ -4,22 +4,33 @@ public class CharacterUnit : Unit
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float damage;
-    [SerializeField] private float range;
-    [SerializeField] private float reloadTime;
     [SerializeField] private Animation animation;
+
+    [Header("Attack properties")]
+    [SerializeField] private float attackDamage;
+    [SerializeField] private float attackRange;
+    [SerializeField] private float attackReloadTime;
+
+    [Header("Skillshot properties")]
+    [SerializeField] private float skillshotDamage;
+    [SerializeField] private float skillshotRange;
+    [SerializeField] private float skillshotReloadTime;
+    [SerializeField] private float skillshotManaCost;
  
     protected override void Start () 
     {
         MoveSystem mover = new GroundInputMoverComponent(moveSpeed, rotationSpeed);
-        AttackSystem attacker = new AttackComponent(damage, range, reloadTime);
         AnimationSystem aniamtor = new AnimationComponent(animation);
+
+        AttackSystem attacker = new AttackComponent(attackDamage, attackRange, attackReloadTime);
+        AttackSystem skillshot = new SkillshotComponent(skillshotDamage, skillshotRange, skillshotRange, skillshotManaCost);
 
         // transform is only assigned to be manipolate from components
         entity = new Entity(transform);
         entity.AddComponent(mover);
-        entity.AddComponent(attacker);
         entity.AddComponent(aniamtor);
+        entity.AddComponent(attacker);
+        entity.AddComponent(skillshot);
 	}
 
     protected override void Update ()
@@ -50,10 +61,10 @@ public class CharacterUnit : Unit
         moveSystem.MovementSpeed = moveSpeed;
         moveSystem.RotationSpeed = rotationSpeed;
 
-        AttackSystem attackSystem = entity.GetComponent<AttackSystem>();
-        attackSystem.Damage = damage;
-        attackSystem.Range = range;
-        attackSystem.ReloadTime = reloadTime;
+        AttackSystem attackSystem = entity.GetComponent<AttackComponent>();
+        attackSystem.Damage = attackDamage;
+        attackSystem.Range = attackRange;
+        attackSystem.ReloadTime = attackReloadTime;
     }
     #endif
 }

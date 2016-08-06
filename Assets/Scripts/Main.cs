@@ -2,15 +2,20 @@
 
 public class Main : MonoBehaviour
 {
-    private Framer touch;
+    private Framer[] touches;
 
 	protected virtual void Awake() 
     {
-        touch = new TouchInput();
+        touches = new Framer[] 
+            {
+                new TouchInput(),
+                new SecondaryTouchInput()
+            };
 	}
 
-	void Update () 
+	private void Update () 
     {
-        touch.FrameUpdate();
+        for (int i = 0; i < touches.Length; i ++)
+            touches[i].FrameUpdate();
 	}
 }
