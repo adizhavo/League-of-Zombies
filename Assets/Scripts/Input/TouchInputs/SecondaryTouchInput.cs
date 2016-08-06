@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// triggers secondary input such as skillshot
 public class SecondaryTouchInput : Framer
 {
     public delegate void SecondaryTouchDown(Transform touchedTr, Vector3 pointTouched);
@@ -8,18 +9,26 @@ public class SecondaryTouchInput : Framer
     public delegate void SecondaryTouch(Transform touchedTr, Vector3 pointTouched);
     public static event SecondaryTouch OnSecondaryTouch;
 
+    private LayerMask secondaryLayerMask;
+
+    public SecondaryTouchInput(LayerMask secondaryLayerMask)
+    {
+        this.secondaryLayerMask = secondaryLayerMask;
+    }
+
     public virtual void FrameUpdate()
     {
         if (InputConfig.Skillshot())
         {
-            RaycastHit hit = TouchInputCaster.CastToMousePos();
+            RaycastHit hit = TouchInputCaster.CastToMousePos(secondaryLayerMask);
 
-            NotifySecondaryTouchPos(hit);
+            NotifySecondaryFrameTouchPos(hit);
             NotifySecondaryTouchDownPos(hit);
         }
     }
 
-    private static void NotifySecondaryTouchPos(RaycastHit hit)
+    // Each frame
+    private static void NotifySecondaryFrameTouchPos(RaycastHit hit)
     {
         if (hit.transform != null && OnSecondaryTouch != null)
         {
@@ -27,6 +36,7 @@ public class SecondaryTouchInput : Framer
         }
     }
 
+    // if the secondary key is pressed
     private static void NotifySecondaryTouchDownPos(RaycastHit hit)
     {
         if (hit.transform != null && InputConfig.SecondaryTouchDown() && OnSecondaryTouchDown != null)

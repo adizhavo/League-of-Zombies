@@ -1,33 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkillshotGizmoComponent : MonoBehaviour, Component
+public class SkillshotGizmoComponent
 {
-    #region Component implementation
-    public Entity Entity {set; get;}
-    #endregion
-
-    public void Init()
+    private GameObject graphic;
+    public Vector3 aimedPos
     {
-        SecondaryTouchInput.OnSecondaryTouch += SkillshotAimPos;
+        private set;
+        get;
     }
 
-    private void OnDestroy()
+    public SkillshotGizmoComponent()
     {
-        SecondaryTouchInput.OnSecondaryTouch -= SkillshotAimPos;
+        graphic = null;
     }
 
-    private void SkillshotAimPos(Transform touchedTr, Vector3 pointTouched)
+    public SkillshotGizmoComponent(GameObject graphic)
     {
-        // TODO rotate the gizmo to face the aimed position
+        this.graphic = graphic;
     }
 
-    #region Framer implementation
-    public void FrameUpdate()
+    ~SkillshotGizmoComponent()
     {
-        skillshotPressed = InputConfig.Skillshot();
+        graphic = null;
     }
-    #endregion
 
-    private bool skillshotPressed = false;
+    public void EnableGraphic()
+    {
+        graphic.SetActive(true);
+    }
+
+    public void DisableGraphic()
+    {
+        graphic.SetActive(false);
+    }
+
+    public void CalculateAimPosition(Vector3 containerPos, Vector3 pointTouched, float Range)
+    {
+        Vector3 direction = (pointTouched - containerPos).normalized;
+        Vector3 endPos = containerPos + direction * Range;
+        aimedPos = new Vector3(endPos.x, containerPos.y, endPos.z);
+
+        #if UNITY_EDITOR
+        Debug.DrawLine(containerPos, aimedPos, Color.yellow);
+        #endif
+
+        PositionGraphic(containerPos, Range);
+    }
+
+    private void PositionGraphic(Vector3 containerPos, float Range)
+    {
+        if (graphic == null)
+            return;
+        graphic.transform.position = containerPos;
+        graphic.transform.localScale = Vector3.one * Range;
+    }
 }

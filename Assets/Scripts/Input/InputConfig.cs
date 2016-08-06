@@ -7,22 +7,22 @@ public static class InputConfig
 
     public static bool TouchDown()
     {
-        return Input.GetMouseButtonDown(0);
+        return Input.GetMouseButtonDown(1);
     }
 
     public static bool TouchUp()
     {
-        return Input.GetMouseButtonUp(0);
+        return Input.GetMouseButtonUp(1);
     }
 
     public static bool TouchDrag()
     {
-        return Input.GetMouseButton(0);
+        return Input.GetMouseButton(1);
     }
 
     public static bool SecondaryTouchDown()
     {
-        return Input.GetMouseButtonDown(1);
+        return Input.GetMouseButtonDown(0);
     }
 
     public static bool Skillshot()

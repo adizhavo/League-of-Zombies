@@ -2,14 +2,17 @@
 
 public class Main : MonoBehaviour
 {
+    public LayerMask PrimaryTouchLayer;
+    public LayerMask SecondaryTouchLayer;
+
     private Framer[] touches;
 
 	protected virtual void Awake() 
     {
         touches = new Framer[] 
             {
-                new TouchInput(),
-                new SecondaryTouchInput()
+                new TouchInput(PrimaryTouchLayer),
+                new SecondaryTouchInput(SecondaryTouchLayer)
             };
 	}
 
