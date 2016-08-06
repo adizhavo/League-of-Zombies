@@ -16,7 +16,7 @@ public class CharacterUnit : Unit
     [SerializeField] private float skillshotRange;
     [SerializeField] private float skillshotReloadTime;
     [SerializeField] private float skillshotManaCost;
-    [SerializeField] private SkillshotGizmoComponent shotGizmo;
+    [SerializeField] private GameObject SkillshotGizmoGraphic;
  
     protected override void Start () 
     {
@@ -24,9 +24,7 @@ public class CharacterUnit : Unit
         AnimationSystem aniamtor = new AnimationComponent(animation);
 
         AttackSystem attacker = new AttackComponent(attackDamage, attackRange, attackReloadTime);
-        AttackSystem skillshot = new SkillshotComponent(skillshotDamage, skillshotRange, skillshotRange, skillshotManaCost);
-
-        shotGizmo.Init();
+        AttackSystem skillshot = new SkillshotComponent(skillshotDamage, skillshotRange, skillshotRange, skillshotManaCost, SkillshotGizmoGraphic);
 
         // transform is only assigned to be manipolate from components
         entity = new Entity(transform);
@@ -34,7 +32,6 @@ public class CharacterUnit : Unit
         entity.AddComponent(aniamtor);
         entity.AddComponent(attacker);
         entity.AddComponent(skillshot);
-        entity.AddComponent(shotGizmo);
 	}
 
     protected override void Update ()
