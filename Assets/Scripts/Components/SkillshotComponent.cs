@@ -26,6 +26,7 @@ public class SkillshotComponent : AttackSystem
         get;
     }
 
+    // indicator will calculate the amed position and position graphcis
     public SkillshotGizmoComponent gizmoIndicator;
 
     public SkillshotComponent(float Damage, float Range, float ReloadTime, float ManaCost, GameObject Graphic)
@@ -65,6 +66,7 @@ public class SkillshotComponent : AttackSystem
         CanCast = false;
     }
 
+    // Theow the shot at the aimed direction
     private void SkillshotTouch(Transform touchedTr, Vector3 touchedPos)
     {
         if (CanCast && CurrentReloadTimer > ReloadTime)
