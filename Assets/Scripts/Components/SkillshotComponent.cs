@@ -28,7 +28,7 @@ public class SkillshotComponent : AttackSystem
 
     public SkillshotComponent(float Damage, float Range, float ReloadTime, float ManaCost)
     {
-        SecondaryTouchInput.OnSecondaryTouch += SkillshotTouch;
+        SecondaryTouchInput.OnSecondaryTouchDown += SkillshotTouch;
 
         this.Damage = Damage;
         this.Range = Range;
@@ -39,7 +39,7 @@ public class SkillshotComponent : AttackSystem
 
     public SkillshotComponent()
     {
-        SecondaryTouchInput.OnSecondaryTouch += SkillshotTouch;
+        SecondaryTouchInput.OnSecondaryTouchDown += SkillshotTouch;
         
         this.Damage = 1;
         this.Range = 1;
@@ -50,7 +50,7 @@ public class SkillshotComponent : AttackSystem
 
     ~SkillshotComponent()
     {
-        SecondaryTouchInput.OnSecondaryTouch -= SkillshotTouch;
+        SecondaryTouchInput.OnSecondaryTouchDown -= SkillshotTouch;
         CanCast = false;
     }
 
@@ -58,9 +58,7 @@ public class SkillshotComponent : AttackSystem
     {
         if (CanCast && CurrentReloadTimer > ReloadTime)
         {
-            Debug.Log("Cast");
-
-            // Subtract mana from mana component
+            // TODO : Cast skillshot and reduce mana
             CurrentReloadTimer = 0f;
         }
     }
