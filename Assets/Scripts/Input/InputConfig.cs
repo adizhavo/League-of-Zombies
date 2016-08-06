@@ -24,7 +24,7 @@ public static class InputConfig
 
     public static bool SecondaryTouch()
     {
-        return Input.GetMouseButton(1);
+        return Input.GetMouseButtonDown(1);
     }
 
     public static bool Skillshot()
