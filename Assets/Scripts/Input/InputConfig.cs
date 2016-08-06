@@ -22,9 +22,14 @@ public static class InputConfig
         return Input.GetMouseButton(0);
     }
 
-    public static bool CastSpell()
+    public static bool SecondaryTouch()
     {
-        return false;
+        return Input.GetMouseButton(1);
+    }
+
+    public static bool Skillshot()
+    {
+        return Input.GetKey(KeyCode.Space);
     }
 
     #endif

@@ -11,13 +11,10 @@ public class TouchInput : Framer
         {
             // are we clicking a UI object ?
 
-            RaycastHit hit = new RaycastHit();
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, 100))
+            RaycastHit hit = TouchInputCaster.CastToMousePos();
+            if (hit.transform != null && OnTouch != null)
             {
-                if (OnTouch != null)
-                    OnTouch(hit.transform, hit.point);
+                OnTouch(hit.transform, hit.point);
             }
         }
     }
